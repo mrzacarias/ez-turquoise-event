@@ -14,11 +14,6 @@ func check(e error) {
 }
 
 func main() {
-  template, err := ioutil.ReadFile("./event_template.json")
-  check(err)
-
-  fmt.Println("Template loaded, checking flags...\n")
-
   vertPtr := flag.String("vert", "home", "Vertical name (home|life)")
   envPtr := flag.String("env", "staging", "Vertical environment (staging|prod)")
   newPtr := flag.String("new", "REQUIRED", "New version (will be scaled up)")
@@ -27,6 +22,11 @@ func main() {
   percPtr := flag.String("percentage", "100", "Percentage of instances with new version (10|33|50|100)")
 
   flag.Parse()
+
+  template, err := ioutil.ReadFile("./event_template.json")
+  check(err)
+
+  fmt.Println("Template loaded, checking flags...\n")
 
   // Validating flags
   if *newPtr == "REQUIRED" {
