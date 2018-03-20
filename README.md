@@ -2,6 +2,10 @@
 
 Helper to generate Turquoise's `event.json`
 
+## Setup
+1. Clone this repo under your `$GOPATH`
+1. Run the setup and build script: `./script/setup_and_build.sh`
+
 ## Usage
 ```
 -vert string
@@ -19,7 +23,7 @@ Helper to generate Turquoise's `event.json`
 ```
 
 ## Running
-`go run main.go -vert=life -env=staging -new=x2150.0.0 -old=x2132.0.0 -notify="@..." percentage=100`
+`bin/ez-turquoise-event -vert=life -env=staging -new=x2150.0.0 -old=x2132.0.0 -notify="@..." percentage=100`
 
 That will create `life_staging_x2150.0.0_100.json`:
 ```
