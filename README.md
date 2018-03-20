@@ -4,18 +4,18 @@ Helper to generate Turquoise's `event.json`
 
 ```
 Usage:
--env string
-    Vertical environment (staging|prod) (default "staging")
--new string
-    New version (will be scaled up) (default "REQUIRED")
--notify string
-    List of people to notify (default "@jacob.murphy")
--old string
-    Old version (will be scaled down) (default "REQUIRED")
--percentage string
-    Percentage of instances with new version (10|33|50|100) (default "100")
 -vert string
-    Vertical name (home|life) (default "home")
+  Vertical name (home|life) (default "home")
+-env string
+  Vertical environment (staging|prod) (default "staging")
+-new string
+  New version (will be scaled up) (default "REQUIRED")
+-old string
+  Old version (will be scaled down) (default "REQUIRED")
+-notify string
+  List of people to notify (default "@jacob.murphy")
+-percentage string
+  Percentage of instances with new version (10|33|50|100) (default "100")
 ```
 
 Ex.:
