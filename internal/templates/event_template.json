@@ -1,6 +1,6 @@
 Slack messages:
   At lynx-{vertical}-deploy and consumer-facing-eng:
-  @here Lynx {vertical} {newVersion} staging has been deployed to {environment} at {percentage}%:
+  @here Lynx {vertical} {newVersion} has been deployed to {environment} at {percentage}%:
   https://github.com/adharmonics/lynx-{vertical}/releases/tag/{newVersion}
   {notify} please check your changes and message me if they look good
 
