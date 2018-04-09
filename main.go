@@ -16,7 +16,7 @@ func check(e error) {
 var vertPtr, envPtr, newPtr, oldPtr, notifyPtr, percPtr *string
 
 func init() {
-	vertPtr = flag.String("vert", "home", "Vertical name (home|life)")
+	vertPtr = flag.String("vert", "home", "Vertical name (auto|home|life)")
 	envPtr = flag.String("env", "staging", "Vertical environment (staging|prod)")
 	newPtr = flag.String("new", "REQUIRED", "New version (will be scaled up)")
 	oldPtr = flag.String("old", "REQUIRED", "Old version (will be scaled down)")
@@ -27,11 +27,7 @@ func init() {
 }
 
 func main() {
-
-	template, err := ioutil.ReadFile("./internal/templates/event_template.json")
-	check(err)
-
-	fmt.Print("Template loaded, checking flags...\n\n")
+	fmt.Print("Checking flags...\n\n")
 
 	// Validating flags
 	if *newPtr == "REQUIRED" {
@@ -40,6 +36,16 @@ func main() {
 	if *oldPtr == "REQUIRED" {
 		panic("'old' (Old Version) flag is required!")
 	}
+
+	var template []byte
+	var err error
+	if *vertPtr == "auto" {
+		template, err = ioutil.ReadFile("./internal/templates/auto_event_template.json")
+	} else {
+		template, err = ioutil.ReadFile("./internal/templates/event_template.json")
+	}
+	check(err)
+	fmt.Print("Template loaded...\n\n")
 
 	fmt.Printf("Flags ok:\n"+
 		"\tVertical: %s\n"+
