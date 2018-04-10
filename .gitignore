@@ -1,3 +1,6 @@
-auto*.json
-home*.json
-life*.json
+auto_prod*.json
+auto_staging*.json
+home_prod*.json
+home_staging*.json
+life_prod*.json
+life_staging*.json
