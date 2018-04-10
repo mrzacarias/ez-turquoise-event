@@ -37,13 +37,7 @@ func main() {
 		panic("'old' (Old Version) flag is required!")
 	}
 
-	var template []byte
-	var err error
-	if *vertPtr == "auto" {
-		template, err = ioutil.ReadFile("./internal/templates/auto_event_template.json")
-	} else {
-		template, err = ioutil.ReadFile("./internal/templates/event_template.json")
-	}
+	template, err := ioutil.ReadFile("./internal/templates/event_template.json")
 	check(err)
 	fmt.Print("Template loaded...\n\n")
 
@@ -56,8 +50,13 @@ func main() {
 		"\tPercentage: %s\n\n",
 		*vertPtr, *envPtr, *newPtr, *oldPtr, *notifyPtr, *percPtr)
 
+	var vertical string
+	if *vertPtr != "auto" {
+		vertical = fmt.Sprintf("%s-", *vertPtr)
+	}
+
 	replacer := strings.NewReplacer(
-		"{vertical}", *vertPtr,
+		"{vertical}", vertical,
 		"{environment}", *envPtr,
 		"{newVersion}", *newPtr,
 		"{oldVersion}", *oldPtr,
