@@ -1,113 +1,24 @@
 Slack messages:
-  At lynx-{vertical}-deploy and consumer-facing-eng:
-  @here Lynx {vertical} {newVersion} has been deployed to {environment} at {percentage}%:
-  https://github.com/adharmonics/lynx-{vertical}/releases/tag/{newVersion}
-  {notify} please check your changes and message me if they look good
-
-Event.json by percentage:
-- - - - - - - - - - CUT HERE FOR 10% - - - - - - - - - -
-[
-  {
-    "appName": "lynx-{vertical}-{environment}-sidekiq",
-    "launchConfigurations": {
-      "lynx-{vertical}-automated-{oldVersion}-worker": 9,
-      "lynx-{vertical}-automated-{newVersion}-worker": 1
-    }
-  },
-  {
-    "appName": "lynx-{vertical}-{environment}-web",
-    "launchConfigurations": {
-      "lynx-{vertical}-automated-{oldVersion}-web": 9,
-      "lynx-{vertical}-automated-{newVersion}-web": 1
-    }
-  }
-]
-
-- - - - - - - - - - CUT HERE FOR 33% - - - - - - - - - -
-[
-  {
-    "appName": "lynx-{vertical}-{environment}-sidekiq",
-    "launchConfigurations": {
-      "lynx-{vertical}-automated-{oldVersion}-worker": 2,
-      "lynx-{vertical}-automated-{newVersion}-worker": 1
-    }
-  },
-  {
-    "appName": "lynx-{vertical}-{environment}-web",
-    "launchConfigurations": {
-      "lynx-{vertical}-automated-{oldVersion}-web": 2,
-      "lynx-{vertical}-automated-{newVersion}-web": 1
-    }
-  }
-]
-
-- - - - - - - - - - CUT HERE FOR 50% - - - - - - - - - -
-[
-  {
-    "appName": "lynx-{vertical}-{environment}-sidekiq",
-    "launchConfigurations": {
-      "lynx-{vertical}-automated-{oldVersion}-worker": 1,
-      "lynx-{vertical}-automated-{newVersion}-worker": 1
-    }
-  },
-  {
-    "appName": "lynx-{vertical}-{environment}-web",
-    "launchConfigurations": {
-      "lynx-{vertical}-automated-{oldVersion}-web": 1,
-      "lynx-{vertical}-automated-{newVersion}-web": 1
-    }
-  }
-]
-
-- - - - - - - - - - CUT HERE FOR 100% - - - - - - - - - -
-[
-  {
-    "appName": "lynx-{vertical}-{environment}-sidekiq",
-    "launchConfigurations": {
-      "lynx-{vertical}-automated-{oldVersion}-worker": 1,
-      "lynx-{vertical}-automated-{newVersion}-worker": 1
-    }
-  },
-  {
-    "appName": "lynx-{vertical}-{environment}-web",
-    "launchConfigurations": {
-      "lynx-{vertical}-automated-{oldVersion}-web": 1,
-      "lynx-{vertical}-automated-{newVersion}-web": 1
-    }
-  },
-  {
-    "appName": "lynx-{vertical}-{environment}-web",
-    "launchConfigurations": {
-      "lynx-{vertical}-automated-{newVersion}-web": 1,
-      "lynx-{vertical}-automated-{oldVersion}-web": 0
-    }
-  },
-  {
-    "appName": "lynx-{vertical}-{environment}-sidekiq",
-    "launchConfigurations": {
-      "lynx-{vertical}-automated-{newVersion}-worker": 1,
-      "lynx-{vertical}-automated-{oldVersion}-worker": 0
-    }
-  }
-]
+  At lynx-{verticalName}-deploy:
+  @here Lynx {verticalName} {newVersion} deployed to {environment} at {percentage}%
 
 Event.json by percentage - A/B version:
 - - - - - - - - - - CUT HERE FOR 10% A/B - - - - - - - -
 [
   {
-    "appName": "lynx-{vertical}-{environment}-sidekiq",
+    "appName": "lynx-{vertical}{environment}-sidekiq",
     "launchConfigurations": {
-      "lynx-{vertical}-automated-{oldVersion}-worker": 8,
-      "lynx-{vertical}-automated-{newVersion}a-worker": 1,
-      "lynx-{vertical}-automated-{newVersion}b-worker": 1
+      "lynx-{vertical}automated-{oldVersion}-worker": 8,
+      "lynx-{vertical}automated-{newVersion}a-worker": 1,
+      "lynx-{vertical}automated-{newVersion}b-worker": 1
     }
   },
   {
-    "appName": "lynx-{vertical}-{environment}-web",
+    "appName": "lynx-{vertical}{environment}-web",
     "launchConfigurations": {
-      "lynx-{vertical}-automated-{oldVersion}-web": 8,
-      "lynx-{vertical}-automated-{newVersion}a-web": 1,
-      "lynx-{vertical}-automated-{newVersion}b-web": 1
+      "lynx-{vertical}automated-{oldVersion}-web": 8,
+      "lynx-{vertical}automated-{newVersion}a-web": 1,
+      "lynx-{vertical}automated-{newVersion}b-web": 1
     }
   }
 ]
@@ -115,19 +26,19 @@ Event.json by percentage - A/B version:
 - - - - - - - - - - CUT HERE FOR 33% A/B - - - - - - - -
 [
   {
-    "appName": "lynx-{vertical}-{environment}-sidekiq",
+    "appName": "lynx-{vertical}{environment}-sidekiq",
     "launchConfigurations": {
-      "lynx-{vertical}-automated-{oldVersion}-worker": 1,
-      "lynx-{vertical}-automated-{newVersion}a-worker": 1,
-      "lynx-{vertical}-automated-{newVersion}b-worker": 1
+      "lynx-{vertical}automated-{oldVersion}-worker": 1,
+      "lynx-{vertical}automated-{newVersion}a-worker": 1,
+      "lynx-{vertical}automated-{newVersion}b-worker": 1
     }
   },
   {
-    "appName": "lynx-{vertical}-{environment}-web",
+    "appName": "lynx-{vertical}{environment}-web",
     "launchConfigurations": {
-      "lynx-{vertical}-automated-{oldVersion}-web": 1,
-      "lynx-{vertical}-automated-{newVersion}a-web": 1,
-      "lynx-{vertical}-automated-{newVersion}b-web": 1
+      "lynx-{vertical}automated-{oldVersion}-web": 1,
+      "lynx-{vertical}automated-{newVersion}a-web": 1,
+      "lynx-{vertical}automated-{newVersion}b-web": 1
     }
   }
 ]
@@ -135,19 +46,125 @@ Event.json by percentage - A/B version:
 - - - - - - - - - - CUT HERE FOR 50% A/B - - - - - - - -
 [
   {
-    "appName": "lynx-{vertical}-{environment}-sidekiq",
+    "appName": "lynx-{vertical}{environment}-sidekiq",
     "launchConfigurations": {
-      "lynx-{vertical}-automated-{oldVersion}-worker": 0,
-      "lynx-{vertical}-automated-{newVersion}a-worker": 1,
-      "lynx-{vertical}-automated-{newVersion}b-worker": 1
+      "lynx-{vertical}automated-{oldVersion}-worker": 0,
+      "lynx-{vertical}automated-{newVersion}a-worker": 1,
+      "lynx-{vertical}automated-{newVersion}b-worker": 1
     }
   },
   {
-    "appName": "lynx-{vertical}-{environment}-web",
+    "appName": "lynx-{vertical}{environment}-web",
     "launchConfigurations": {
-      "lynx-{vertical}-automated-{oldVersion}-web": 0,
-      "lynx-{vertical}-automated-{newVersion}a-web": 1,
-      "lynx-{vertical}-automated-{newVersion}b-web": 1
+      "lynx-{vertical}automated-{oldVersion}-web": 0,
+      "lynx-{vertical}automated-{newVersion}a-web": 1,
+      "lynx-{vertical}automated-{newVersion}b-web": 1
+    }
+  }
+]
+
+- - - - - - - - - - CUT HERE FOR 100% A/B - - - - - - - - - -
+[
+  {
+    "appName": "lynx-{vertical}{environment}-web",
+    "launchConfigurations": {
+      "lynx-{vertical}automated-{newVersion}{winnerLeg}-web": 1,
+      "lynx-{vertical}automated-{newVersion}{loserLeg}-web": 0,
+    }
+  },
+  {
+    "appName": "lynx-{vertical}{environment}-sidekiq",
+    "launchConfigurations": {
+      "lynx-{vertical}automated-{newVersion}{winnerLeg}-worker": 1,
+      "lynx-{vertical}automated-{newVersion}{loserLeg}-worker": 0,
+    }
+  }
+]
+
+
+Event.json by percentage:
+- - - - - - - - - - CUT HERE FOR 10% - - - - - - - - - -
+[
+  {
+    "appName": "lynx-{vertical}{environment}-sidekiq",
+    "launchConfigurations": {
+      "lynx-{vertical}automated-{oldVersion}-worker": 9,
+      "lynx-{vertical}automated-{newVersion}-worker": 1
+    }
+  },
+  {
+    "appName": "lynx-{vertical}{environment}-web",
+    "launchConfigurations": {
+      "lynx-{vertical}automated-{oldVersion}-web": 9,
+      "lynx-{vertical}automated-{newVersion}-web": 1
+    }
+  }
+]
+
+- - - - - - - - - - CUT HERE FOR 33% - - - - - - - - - -
+[
+  {
+    "appName": "lynx-{vertical}{environment}-sidekiq",
+    "launchConfigurations": {
+      "lynx-{vertical}automated-{oldVersion}-worker": 2,
+      "lynx-{vertical}automated-{newVersion}-worker": 1
+    }
+  },
+  {
+    "appName": "lynx-{vertical}{environment}-web",
+    "launchConfigurations": {
+      "lynx-{vertical}automated-{oldVersion}-web": 2,
+      "lynx-{vertical}automated-{newVersion}-web": 1
+    }
+  }
+]
+
+- - - - - - - - - - CUT HERE FOR 50% - - - - - - - - - -
+[
+  {
+    "appName": "lynx-{vertical}{environment}-sidekiq",
+    "launchConfigurations": {
+      "lynx-{vertical}automated-{oldVersion}-worker": 1,
+      "lynx-{vertical}automated-{newVersion}-worker": 1
+    }
+  },
+  {
+    "appName": "lynx-{vertical}{environment}-web",
+    "launchConfigurations": {
+      "lynx-{vertical}automated-{oldVersion}-web": 1,
+      "lynx-{vertical}automated-{newVersion}-web": 1
+    }
+  }
+]
+
+- - - - - - - - - - CUT HERE FOR 100% - - - - - - - - - -
+[
+  {
+    "appName": "lynx-{vertical}{environment}-sidekiq",
+    "launchConfigurations": {
+      "lynx-{vertical}automated-{oldVersion}-worker": 1,
+      "lynx-{vertical}automated-{newVersion}-worker": 1
+    }
+  },
+  {
+    "appName": "lynx-{vertical}{environment}-web",
+    "launchConfigurations": {
+      "lynx-{vertical}automated-{oldVersion}-web": 1,
+      "lynx-{vertical}automated-{newVersion}-web": 1
+    }
+  },
+  {
+    "appName": "lynx-{vertical}{environment}-web",
+    "launchConfigurations": {
+      "lynx-{vertical}automated-{newVersion}-web": 1,
+      "lynx-{vertical}automated-{oldVersion}-web": 0
+    }
+  },
+  {
+    "appName": "lynx-{vertical}{environment}-sidekiq",
+    "launchConfigurations": {
+      "lynx-{vertical}automated-{newVersion}-worker": 1,
+      "lynx-{vertical}automated-{oldVersion}-worker": 0
     }
   }
 ]

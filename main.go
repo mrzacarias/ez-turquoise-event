@@ -13,14 +13,15 @@ func check(e error) {
 	}
 }
 
-var vertPtr, envPtr, newPtr, oldPtr, notifyPtr, percPtr *string
+var vertPtr, envPtr, newPtr, oldPtr, winnerPtr, loserPtr, percPtr *string
 
 func init() {
 	vertPtr = flag.String("vert", "home", "Vertical name (auto|home|life)")
 	envPtr = flag.String("env", "staging", "Vertical environment (staging|prod)")
 	newPtr = flag.String("new", "REQUIRED", "New version (will be scaled up)")
 	oldPtr = flag.String("old", "REQUIRED", "Old version (will be scaled down)")
-	notifyPtr = flag.String("notify", "@jacob.murphy", "List of people to notify")
+	winnerPtr = flag.String("winner", "NO WINNER SET", "Winner leg (100% A/B)")
+	loserPtr = flag.String("loser", "NO LOSER SET", "Loser leg (100% A/B)")
 	percPtr = flag.String("percentage", "100", "Percentage of instances with new version (10|33|50|100)")
 
 	flag.Parse()
@@ -46,9 +47,10 @@ func main() {
 		"\tEnvironment: %s\n"+
 		"\tNew Version: %s\n"+
 		"\tOld Version: %s\n"+
-		"\tNotify: %s\n\n"+
+		"\tWinner Leg: %s\n"+
+		"\tLoser Leg: %s\n"+
 		"\tPercentage: %s\n\n",
-		*vertPtr, *envPtr, *newPtr, *oldPtr, *notifyPtr, *percPtr)
+		*vertPtr, *envPtr, *newPtr, *oldPtr, *winnerPtr, *loserPtr, *percPtr)
 
 	var vertical string
 	if *vertPtr != "auto" {
@@ -56,15 +58,17 @@ func main() {
 	}
 
 	replacer := strings.NewReplacer(
+		"{verticalName}", *vertPtr,
 		"{vertical}", vertical,
 		"{environment}", *envPtr,
 		"{newVersion}", *newPtr,
 		"{oldVersion}", *oldPtr,
-		"{notify}", *notifyPtr,
+		"{winnerLeg}", *winnerPtr,
+		"{loserLeg}", *loserPtr,
 		"{percentage}", *percPtr,
 	)
 
-	resultFile := fmt.Sprintf("./%s_%s_%s_%s.json", *vertPtr, *envPtr, *newPtr, *percPtr)
+	resultFile := fmt.Sprintf("./%s_%s_%s(%s)_%s.json", *vertPtr, *envPtr, *newPtr, *winnerPtr, *percPtr)
 	fmt.Println(fmt.Sprintf("Generating '%s'...\n", resultFile))
 
 	result := replacer.Replace(string(template))
