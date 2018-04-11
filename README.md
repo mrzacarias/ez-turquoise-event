@@ -79,19 +79,19 @@ Event.json by percentage - A/B version:
 - - - - - - - - - - CUT HERE FOR 50% A/B - - - - - - - -
 [
   {
-    "appName": "lynx-life-staging-sidekiq",
-    "launchConfigurations": {
-      "lynx-life-automated-x2132.0.0-worker": 0,
-      "lynx-life-automated-x2150.0.0a-worker": 1,
-      "lynx-life-automated-x2150.0.0b-worker": 1
-    }
-  },
-  {
     "appName": "lynx-life-staging-web",
     "launchConfigurations": {
       "lynx-life-automated-x2132.0.0-web": 0,
       "lynx-life-automated-x2150.0.0a-web": 1,
       "lynx-life-automated-x2150.0.0b-web": 1
+    }
+  },
+  {
+    "appName": "lynx-life-staging-sidekiq",
+    "launchConfigurations": {
+      "lynx-life-automated-x2132.0.0-worker": 0,
+      "lynx-life-automated-x2150.0.0a-worker": 1,
+      "lynx-life-automated-x2150.0.0b-worker": 1
     }
   }
 ]
@@ -103,6 +103,7 @@ Event.json by percentage - A/B version:
     "launchConfigurations": {
       "lynx-life-automated-x2150.0.0a-web": 1,
       "lynx-life-automated-x2150.0.0b-web": 0,
+      "lynx-life-automated-x2132.0.0-web": 0
     }
   },
   {
@@ -110,6 +111,7 @@ Event.json by percentage - A/B version:
     "launchConfigurations": {
       "lynx-life-automated-x2150.0.0a-worker": 1,
       "lynx-life-automated-x2150.0.0b-worker": 0,
+      "lynx-life-automated-x2132.0.0-worker": 0
     }
   }
 ]

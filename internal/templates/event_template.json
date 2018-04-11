@@ -46,19 +46,19 @@ Event.json by percentage - A/B version:
 - - - - - - - - - - CUT HERE FOR 50% A/B - - - - - - - -
 [
   {
-    "appName": "lynx-{vertical}{environment}-sidekiq",
-    "launchConfigurations": {
-      "lynx-{vertical}automated-{oldVersion}-worker": 0,
-      "lynx-{vertical}automated-{newVersion}a-worker": 1,
-      "lynx-{vertical}automated-{newVersion}b-worker": 1
-    }
-  },
-  {
     "appName": "lynx-{vertical}{environment}-web",
     "launchConfigurations": {
       "lynx-{vertical}automated-{oldVersion}-web": 0,
       "lynx-{vertical}automated-{newVersion}a-web": 1,
       "lynx-{vertical}automated-{newVersion}b-web": 1
+    }
+  },
+  {
+    "appName": "lynx-{vertical}{environment}-sidekiq",
+    "launchConfigurations": {
+      "lynx-{vertical}automated-{oldVersion}-worker": 0,
+      "lynx-{vertical}automated-{newVersion}a-worker": 1,
+      "lynx-{vertical}automated-{newVersion}b-worker": 1
     }
   }
 ]
@@ -70,6 +70,7 @@ Event.json by percentage - A/B version:
     "launchConfigurations": {
       "lynx-{vertical}automated-{newVersion}{winnerLeg}-web": 1,
       "lynx-{vertical}automated-{newVersion}{loserLeg}-web": 0,
+      "lynx-{vertical}automated-{oldVersion}-web": 0
     }
   },
   {
@@ -77,6 +78,7 @@ Event.json by percentage - A/B version:
     "launchConfigurations": {
       "lynx-{vertical}automated-{newVersion}{winnerLeg}-worker": 1,
       "lynx-{vertical}automated-{newVersion}{loserLeg}-worker": 0,
+      "lynx-{vertical}automated-{oldVersion}-worker": 0
     }
   }
 ]
