@@ -1,6 +1,10 @@
 Slack messages:
-  At lynx-{verticalName}-deploy:
-  @here Lynx {verticalName} {newVersion} deployed to {environment} at {percentage}%
+@here {newVersion} deployed at {percentage}%
+
+@here {newVersion} ramped to {percentage}%
+
+@here {newVersion}{winnerLeg} scaled to 100%
+@newdeployer is the next deployer for {vertical} :adult-baby:
 
 Event.json by percentage - A/B version:
 - - - - - - - - - - CUT HERE FOR 10% A/B - - - - - - - -
@@ -68,17 +72,17 @@ Event.json by percentage - A/B version:
   {
     "appName": "lynx-{vertical}{environment}-web",
     "launchConfigurations": {
-      "lynx-{vertical}automated-{newVersion}{winnerLeg}-web": 1,
+      "lynx-{vertical}automated-{oldVersion}-web": 0,
       "lynx-{vertical}automated-{newVersion}{loserLeg}-web": 0,
-      "lynx-{vertical}automated-{oldVersion}-web": 0
+      "lynx-{vertical}automated-{newVersion}{winnerLeg}-web": 1
     }
   },
   {
     "appName": "lynx-{vertical}{environment}-sidekiq",
     "launchConfigurations": {
-      "lynx-{vertical}automated-{newVersion}{winnerLeg}-worker": 1,
+      "lynx-{vertical}automated-{oldVersion}-worker": 0,
       "lynx-{vertical}automated-{newVersion}{loserLeg}-worker": 0,
-      "lynx-{vertical}automated-{oldVersion}-worker": 0
+      "lynx-{vertical}automated-{newVersion}{winnerLeg}-worker": 1
     }
   }
 ]
