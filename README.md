@@ -27,7 +27,7 @@ Helper to generate Turquoise's `event.json`
 ```
 
 ## Running
-`./script/run.sh -vert=life -env=staging -new=x2150.0.0 -old=x2132.0.0 -winner=a -loser=b -percentage=33`
+`./script/run.sh -vert=home -env=staging -new=x2346.0.0 -old=x2341.0.0 -winner=a -loser=b`
 
 That will create `life_staging_x2150.0.0_100.json`:
 ```
