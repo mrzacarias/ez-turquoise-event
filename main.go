@@ -16,13 +16,12 @@ func check(e error) {
 var vertPtr, envPtr, newPtr, oldPtr, winnerPtr, loserPtr, percPtr *string
 
 func init() {
-	vertPtr = flag.String("vert", "home", "Vertical name (auto|home|life)")
+	vertPtr = flag.String("vert", "life", "Vertical name (auto|home|life)")
 	envPtr = flag.String("env", "staging", "Vertical environment (staging|prod)")
 	newPtr = flag.String("new", "REQUIRED", "New version (will be scaled up)")
 	oldPtr = flag.String("old", "REQUIRED", "Old version (will be scaled down)")
-	winnerPtr = flag.String("winner", "NO WINNER SET", "Winner leg (100% A/B)")
-	loserPtr = flag.String("loser", "NO LOSER SET", "Loser leg (100% A/B)")
-	percPtr = flag.String("percentage", "100", "Percentage of instances with new version (10|33|50|100)")
+	winnerPtr = flag.String("winner", "b", "Winner leg (100% A/B)")
+	loserPtr = flag.String("loser", "a", "Loser leg (100% A/B)")
 
 	flag.Parse()
 }
@@ -38,7 +37,11 @@ func main() {
 		panic("'old' (Old Version) flag is required!")
 	}
 
-	template, err := ioutil.ReadFile("./internal/templates/event_template.json")
+	templateFile := "event_template_staging.json"
+	if *envPtr == "prod" {
+		templateFile = "event_template_prod.json"
+	}
+	template, err := ioutil.ReadFile("./internal/templates/" + templateFile)
 	check(err)
 	fmt.Print("Template loaded...\n\n")
 
@@ -48,9 +51,8 @@ func main() {
 		"\tNew Version: %s\n"+
 		"\tOld Version: %s\n"+
 		"\tWinner Leg: %s\n"+
-		"\tLoser Leg: %s\n"+
-		"\tPercentage: %s\n\n",
-		*vertPtr, *envPtr, *newPtr, *oldPtr, *winnerPtr, *loserPtr, *percPtr)
+		"\tLoser Leg: %s\n\n",
+		*vertPtr, *envPtr, *newPtr, *oldPtr, *winnerPtr, *loserPtr)
 
 	var vertical string
 	if *vertPtr != "auto" {
@@ -65,10 +67,9 @@ func main() {
 		"{oldVersion}", *oldPtr,
 		"{winnerLeg}", *winnerPtr,
 		"{loserLeg}", *loserPtr,
-		"{percentage}", *percPtr,
 	)
 
-	resultFile := fmt.Sprintf("./%s_%s_%s(%s)_%s.json", *vertPtr, *envPtr, *newPtr, *winnerPtr, *percPtr)
+	resultFile := fmt.Sprintf("./%s_%s_%s(%s).json", *vertPtr, *envPtr, *newPtr, *winnerPtr)
 	fmt.Println(fmt.Sprintf("Generating '%s'...\n", resultFile))
 
 	result := replacer.Replace(string(template))

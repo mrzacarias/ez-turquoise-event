@@ -1,0 +1,87 @@
+Slack messages:
+@here {newVersion} deployed at 33%
+
+@here {newVersion} ramped to 50%
+
+@here {newVersion}{winnerLeg} scaled to 100%
+
+Event.json by percentage - Prod A/B version:
+- - - - - - - - - - CUT HERE FOR 10% A/B - - - - - - - -
+[
+  {
+    "appName": "lynx-{vertical}{environment}-sidekiq",
+    "launchConfigurations": {
+      "lynx-{vertical}automated-{oldVersion}-worker": 8,
+      "lynx-{vertical}automated-{newVersion}{winnerLeg}-worker": 1,
+      "lynx-{vertical}automated-{newVersion}{loserLeg}-worker": 1
+    }
+  },
+  {
+    "appName": "lynx-{vertical}{environment}-web",
+    "launchConfigurations": {
+      "lynx-{vertical}automated-{oldVersion}-web": 8,
+      "lynx-{vertical}automated-{newVersion}{winnerLeg}-web": 1,
+      "lynx-{vertical}automated-{newVersion}{loserLeg}-web": 1
+    }
+  }
+]
+
+- - - - - - - - - - CUT HERE FOR 33% A/B - - - - - - - -
+[
+  {
+    "appName": "lynx-{vertical}{environment}-sidekiq",
+    "launchConfigurations": {
+      "lynx-{vertical}automated-{oldVersion}-worker": 1,
+      "lynx-{vertical}automated-{newVersion}{winnerLeg}-worker": 1,
+      "lynx-{vertical}automated-{newVersion}{loserLeg}-worker": 1
+    }
+  },
+  {
+    "appName": "lynx-{vertical}{environment}-web",
+    "launchConfigurations": {
+      "lynx-{vertical}automated-{oldVersion}-web": 1,
+      "lynx-{vertical}automated-{newVersion}{winnerLeg}-web": 1,
+      "lynx-{vertical}automated-{newVersion}{loserLeg}-web": 1
+    }
+  }
+]
+
+- - - - - - - - - - CUT HERE FOR 50% A/B - - - - - - - -
+[
+  {
+    "appName": "lynx-{vertical}{environment}-web",
+    "launchConfigurations": {
+      "lynx-{vertical}automated-{oldVersion}-web": 0,
+      "lynx-{vertical}automated-{newVersion}{winnerLeg}-web": 1,
+      "lynx-{vertical}automated-{newVersion}{loserLeg}-web": 1
+    }
+  },
+  {
+    "appName": "lynx-{vertical}{environment}-sidekiq",
+    "launchConfigurations": {
+      "lynx-{vertical}automated-{oldVersion}-worker": 0,
+      "lynx-{vertical}automated-{newVersion}{winnerLeg}-worker": 1,
+      "lynx-{vertical}automated-{newVersion}{loserLeg}-worker": 1
+    }
+  }
+]
+
+- - - - - - - - - - CUT HERE FOR 100% A/B - - - - - - - - - -
+[
+  {
+    "appName": "lynx-{vertical}{environment}-web",
+    "launchConfigurations": {
+      "lynx-{vertical}automated-{oldVersion}-web": 0,
+      "lynx-{vertical}automated-{newVersion}{loserLeg}-web": 0,
+      "lynx-{vertical}automated-{newVersion}{winnerLeg}-web": 1
+    }
+  },
+  {
+    "appName": "lynx-{vertical}{environment}-sidekiq",
+    "launchConfigurations": {
+      "lynx-{vertical}automated-{oldVersion}-worker": 0,
+      "lynx-{vertical}automated-{newVersion}{loserLeg}-worker": 0,
+      "lynx-{vertical}automated-{newVersion}{winnerLeg}-worker": 1
+    }
+  }
+]
