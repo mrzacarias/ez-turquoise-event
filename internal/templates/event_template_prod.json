@@ -1,9 +1,10 @@
 Slack messages:
-@here {newVersion} deployed at 33%
+`{newVersion}{loserLeg}/{winnerLeg}` deployed at 10%
+`{newVersion}{loserLeg}/{winnerLeg}` deployed at 33%
 
-@here {newVersion} ramped to 50%
+`{newVersion}{loserLeg}/{winnerLeg}` ramped to 50%
 
-@here {newVersion}{winnerLeg} scaled to 100%
+`{newVersion}{winnerLeg}` ramped to 100%
 
 Event.json by percentage - Prod A/B version:
 - - - - - - - - - - CUT HERE FOR 10% A/B - - - - - - - -

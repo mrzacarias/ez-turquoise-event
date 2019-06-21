@@ -1,9 +1,6 @@
 Slack messages:
-@here {newVersion} deployed at 33%
-
-@here {newVersion} ramped to 50%
-
-@here {newVersion}{winnerLeg} scaled to 100%
+Staging released: https://github.com/adharmonics/lynx-life/releases/tag/{newVersion}
+@dev please, check you changes and let me know if they look good
 
 Event.json by percentage - Staging No A/B version:
 - - - - - - - - - - CUT HERE FOR 10% - - - - - - - - - -

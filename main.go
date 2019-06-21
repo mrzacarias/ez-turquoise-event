@@ -48,11 +48,11 @@ func main() {
 	fmt.Printf("Flags ok:\n"+
 		"\tVertical: %s\n"+
 		"\tEnvironment: %s\n"+
-		"\tNew Version: %s\n"+
 		"\tOld Version: %s\n"+
-		"\tWinner Leg: %s\n"+
-		"\tLoser Leg: %s\n\n",
-		*vertPtr, *envPtr, *newPtr, *oldPtr, *winnerPtr, *loserPtr)
+		"\tNew Version: %s\n"+
+		"\tLoser Leg: %s\n"+
+		"\tWinner Leg: %s\n\n",
+		*vertPtr, *envPtr, *oldPtr, *newPtr, *loserPtr, *winnerPtr)
 
 	var vertical string
 	if *vertPtr != "auto" {
