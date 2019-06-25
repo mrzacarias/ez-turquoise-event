@@ -1,5 +1,5 @@
 Slack messages:
-Staging released: https://github.com/adharmonics/lynx-life/releases/tag/{newVersion}
+Staging released: https://github.com/adharmonics/lynx-{vertical}/releases/tag/{newVersion}
 @dev please, check you changes and let me know if they look good
 
 Event.json by percentage - Staging No A/B version:
