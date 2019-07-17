@@ -54,13 +54,17 @@ func main() {
 		"\tWinner Leg: %s\n\n",
 		*vertPtr, *envPtr, *oldPtr, *newPtr, *loserPtr, *winnerPtr)
 
-	var vertical string
+	var vertical, releaseURL string
 	if *vertPtr != "auto" {
 		vertical = fmt.Sprintf("%s-", *vertPtr)
+		releaseURL = fmt.Sprintf("https://github.com/adharmonics/lynx-%s/releases/tag/", *vertPtr)
+	} else {
+		vertical = ""
+		releaseURL = fmt.Sprintf("https://github.com/adharmonics/lynx/releases/tag/")
 	}
 
 	replacer := strings.NewReplacer(
-		"{verticalName}", *vertPtr,
+		"{releaseURL}", releaseURL,
 		"{vertical}", vertical,
 		"{environment}", *envPtr,
 		"{newVersion}", *newPtr,
