@@ -3,42 +3,6 @@ Staging released: https://github.com/adharmonics/lynx-{vertical}/releases/tag/{n
 @dev please, check you changes and let me know if they look good
 
 Event.json by percentage - Staging No A/B version:
-- - - - - - - - - - CUT HERE FOR 10% - - - - - - - - - -
-[
-  {
-    "appName": "lynx-{vertical}{environment}-sidekiq",
-    "launchConfigurations": {
-      "lynx-{vertical}automated-{oldVersion}-worker": 9,
-      "lynx-{vertical}automated-{newVersion}-worker": 1
-    }
-  },
-  {
-    "appName": "lynx-{vertical}{environment}-web",
-    "launchConfigurations": {
-      "lynx-{vertical}automated-{oldVersion}-web": 9,
-      "lynx-{vertical}automated-{newVersion}-web": 1
-    }
-  }
-]
-
-- - - - - - - - - - CUT HERE FOR 33% - - - - - - - - - -
-[
-  {
-    "appName": "lynx-{vertical}{environment}-sidekiq",
-    "launchConfigurations": {
-      "lynx-{vertical}automated-{oldVersion}-worker": 2,
-      "lynx-{vertical}automated-{newVersion}-worker": 1
-    }
-  },
-  {
-    "appName": "lynx-{vertical}{environment}-web",
-    "launchConfigurations": {
-      "lynx-{vertical}automated-{oldVersion}-web": 2,
-      "lynx-{vertical}automated-{newVersion}-web": 1
-    }
-  }
-]
-
 - - - - - - - - - - CUT HERE FOR 50% - - - - - - - - - -
 [
   {
