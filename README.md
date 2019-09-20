@@ -24,4 +24,4 @@ Usage of bin/ez-turquoise-event:
 ```
 
 ## Running
-`./script/run.sh -vert=life -env=prod -old=v20190613.0b -new=v20190621.0`
+`./script/run.sh -vert=auto -env=prod -old=v20190910.0b -new=v20190912.0`
